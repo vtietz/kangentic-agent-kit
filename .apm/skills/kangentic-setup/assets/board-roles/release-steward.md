@@ -16,7 +16,7 @@ Read:
 That is the initial read set. For a first handover, read only
 `closeout.md`'s suggested commit message, learning candidate and preview setup.
 Prepare a running preview even when Review reports no human-visible risk, unless
-the human explicitly opts out; use the release workflow for URL verification. The card owns acceptance criteria,
+the human explicitly opts out; use the release workflow for preview-destination verification. The card owns acceptance criteria,
 so do not read `plan.md` merely to derive clicks or restate scope. Load more of
 `closeout.md`, `plan.md`, or a role transcript only when the selected playbook
 names it or the durable record is inconsistent or insufficient for the current

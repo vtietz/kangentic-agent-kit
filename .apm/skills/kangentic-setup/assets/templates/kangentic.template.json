@@ -60,7 +60,7 @@
     {
       "key": "implementation",
       "name": "Implementation",
-      "description": "Build the plan and apply later Review or human feedback as a delta in the same isolated resumable session. When planned or objectively discovered, park a working early draft in the browser, ask the human, and wait in this column before tests/hardening. Then complete focused validation and route to Review.",
+      "description": "Build the plan and apply later Review or human feedback as a delta in the same isolated resumable session. When planned or objectively discovered, park a working early draft in the project preview, ask the human, and wait in this column before tests/hardening. Then complete focused validation and route to Review.",
       "icon": "square-terminal",
       "autoSpawn": true,
       "permissionMode": "bypassPermissions",
@@ -107,7 +107,7 @@
     {
       "key": "release_gate",
       "name": "Release Gate",
-      "description": "Human release gate operated by a Release Steward. It verifies the reviewed branch, prepares a running preview and review-informed handover, opens and reports the same verified feature URL, and waits. Preview is skipped only at the human’s request. Corrections return to their owning stage. Only an explicit human choice authorizes PR publication, local landing, or direct publication.",
+      "description": "Human release gate operated by a Release Steward. It verifies the reviewed branch, prepares a running preview and review-informed handover, opens and reports the same verified preview destination, and waits. Preview is skipped only at the human’s request. Corrections return to their owning stage. Only an explicit human choice authorizes PR publication, local landing, or direct publication.",
       "icon": "sailboat",
       "color": "#F97316",
       "autoSpawn": true,

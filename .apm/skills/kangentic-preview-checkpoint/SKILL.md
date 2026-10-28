@@ -18,10 +18,12 @@ When `Early human checkpoint: yes`:
 
 1. Build only the coherent slice needed for the decision and run diagnostics,
    boot, and happy-path checks.
-2. Run the declared setup, start `preview.sh`, and park the browser on the
-   decision screen. Add a screenshot only when it clarifies the state.
-3. Commit the draft and record URL/login, click path, one decision, working and
-   unfinished behavior, and sanity checks under `## Early preview`.
+2. Run the declared setup, start `preview.sh`, and park the preview
+   destination declared by the project profile on the decision screen. Add a
+   screenshot only when it clarifies the state.
+3. Commit the draft and record destination/login, interaction path, one
+   decision, working and unfinished behavior, and sanity checks under
+   `## Early preview`.
 4. Set `stage:planned` plus `wait:decision`; ask **Continue and finish**,
    **Adjust draft**, **Replan**, or **Park**.
 
