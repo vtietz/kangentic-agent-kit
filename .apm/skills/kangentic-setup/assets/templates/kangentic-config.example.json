@@ -1,0 +1,23 @@
+{
+  "tokens": {
+    "repository.profile": ".agents/project.md",
+    "board.profile": ".kanban/project.md",
+    "roles.refiner": ".kanban/roles/refiner.md",
+    "roles.planner": ".kanban/roles/planner.md",
+    "roles.implementer": ".kanban/roles/implementer.md",
+    "roles.reviewer": ".kanban/roles/reviewer.md",
+    "roles.releaseSteward": ".kanban/roles/release-steward.md",
+    "agents.refinement": "<agent-id>",
+    "models.refinement": "<model-id>",
+    "agents.planning": "<agent-id>",
+    "models.planning": "<model-id>",
+    "agents.implementation": "<agent-id>",
+    "models.implementation": "<model-id>",
+    "agents.review": "<agent-id>",
+    "models.review": "<model-id>",
+    "agents.release": "<agent-id>",
+    "models.release": "<model-id>",
+    "agents.efficient": "<agent-id>",
+    "models.efficient": "<model-id>"
+  }
+}

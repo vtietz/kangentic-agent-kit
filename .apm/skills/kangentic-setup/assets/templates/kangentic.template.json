@@ -1,0 +1,168 @@
+{
+  "version": 1,
+  "columns": [
+    {
+      "key": "to_do",
+      "name": "To Do",
+      "role": "todo",
+      "description": "Nothing runs here. Moving a card BACK here is a reset: it kills the session and deletes the worktree and branch. Park cards in Needs input instead. The Backlog tab is the pre-board inbox; promote from there into this column.",
+      "icon": "layers",
+      "color": "#6b7280"
+    },
+    {
+      "key": "refinement",
+      "name": "Refinement",
+      "description": "Isolated requirement refinement without application bootstrap. Drafts the project-profile requirement artifact, improves the card, then waits for a human to publish and park, continue to Planning, revise, or park the draft.",
+      "icon": "sprout",
+      "color": "#eab308",
+      "autoSpawn": true,
+      "permissionMode": "auto",
+      "agentOverride": "${agents.refinement}",
+      "modelOverride": "${models.refinement}",
+      "effortOverride": "high",
+      "sessionTarget": "isolated",
+      "automations": {
+        "onEnter": [
+          {
+            "name": "Message",
+            "type": "send_message",
+            "message": "First run git status --porcelain && git merge --no-edit main; stop on a dirty tree or conflict. Then read ${repository.profile}, ${board.profile}, and ${roles.refiner} and follow them for card {{taskId}}. Read the card with kangentic_find_task and keep the session open for the documented human choice; write to GitHub only after publication.",
+            "mode": "immediate"
+          }
+        ]
+      }
+    },
+    {
+      "key": "planning",
+      "name": "Planning",
+      "description": "Turn the requirement into an implementation plan: challenge it, write the acceptance criteria into the card, then design the change against the code. Keeps questions and dependencies visible at the top of the card and waits for your reply in Planning; routes to Implementation when ready.",
+      "icon": "map",
+      "color": "#8b5cf6",
+      "autoSpawn": true,
+      "permissionMode": "bypassPermissions",
+      "agentOverride": "${agents.planning}",
+      "modelOverride": "${models.planning}",
+      "effortOverride": "high",
+      "sessionTarget": "isolated",
+      "sessionSpawnStrategy": "always_spawn_new",
+      "automations": {
+        "onEnter": [
+          {
+            "name": "Message",
+            "type": "send_message",
+            "message": "Read ${repository.profile}, ${board.profile}, then ${roles.planner} as directed by its Read first section and follow it for card {{taskId}}. Load issue, existing-backlog, not-building-now, or visual-mock sections only when applicable. Read the card with kangentic_find_task. Part 1 goes into ## Refined idea; Part 2 goes to .kanban/{{taskId}}/plan.md and e2e-specs.txt.",
+            "mode": "immediate"
+          }
+        ]
+      },
+      "planExitTarget": "Implementation"
+    },
+    {
+      "key": "implementation",
+      "name": "Implementation",
+      "description": "Build the plan and apply later Review or human feedback as a delta in the same isolated resumable session. When planned or objectively discovered, park a working early draft in the browser, ask the human, and wait in this column before tests/hardening. Then complete focused validation and route to Review.",
+      "icon": "square-terminal",
+      "autoSpawn": true,
+      "permissionMode": "bypassPermissions",
+      "agentOverride": "${agents.implementation}",
+      "modelOverride": "${models.implementation}",
+      "effortOverride": "medium",
+      "sessionTarget": "isolated",
+      "sessionSpawnStrategy": "always_spawn_new",
+      "automations": {
+        "onEnter": [
+          {
+            "name": "Message",
+            "type": "send_message",
+            "message": "Read ${repository.profile}, ${board.profile}, then ${roles.implementer} and follow it for card {{taskId}}. Use .kanban/{{taskId}}/plan.md as the contract and write .kanban/{{taskId}}/closeout.md. Read the full card only for direct-entry scope or unresolved human feedback.",
+            "mode": "immediate"
+          }
+        ]
+      }
+    },
+    {
+      "key": "review",
+      "name": "Review",
+      "description": "Runs the static gate and plan-selected tests once, then reads the diff independently. Product corrections route to Implementation, design changes to Planning, pipeline failures stay in Review with a visible reason and recovery action while awaiting your reply; Review never fixes.",
+      "icon": "shield-check",
+      "color": "#a855f7",
+      "autoSpawn": true,
+      "permissionMode": "bypassPermissions",
+      "agentOverride": "${agents.review}",
+      "modelOverride": "${models.review}",
+      "effortOverride": "light",
+      "sessionTarget": "isolated",
+      "sessionSpawnStrategy": "always_spawn_new",
+      "automations": {
+        "onEnter": [
+          {
+            "name": "Message",
+            "type": "send_message",
+            "message": "Read ${repository.profile}, ${board.profile}, then ${roles.reviewer} and follow it for card {{taskId}}. Run its section 0 checks first. The contract is .kanban/{{taskId}}/plan.md, evidence is closeout.md, and your output is review.md; do not fetch the full card unless the artifacts identify unresolved human feedback.",
+            "mode": "immediate"
+          }
+        ]
+      }
+    },
+    {
+      "key": "release_gate",
+      "name": "Release Gate",
+      "description": "Human release gate operated by a Release Steward. It verifies the reviewed branch, prepares a running preview and review-informed handover, opens and reports the same verified feature URL, and waits. Preview is skipped only at the human’s request. Corrections return to their owning stage. Only an explicit human choice authorizes PR publication, local landing, or direct publication.",
+      "icon": "sailboat",
+      "color": "#F97316",
+      "autoSpawn": true,
+      "permissionMode": "bypassPermissions",
+      "agentOverride": "${agents.release}",
+      "modelOverride": "${models.release}",
+      "effortOverride": "high",
+      "sessionTarget": "isolated",
+      "sessionSpawnStrategy": "always_spawn_new",
+      "automations": {
+        "onEnter": [
+          {
+            "name": "Message",
+            "type": "send_message",
+            "message": "Read ${roles.releaseSteward} and follow it for card {{taskId}}. Inspect durable card, branch, and PR state, then load only the one conditional release-workflow reference matching the current mode. On first arrival prepare the handover and wait; never treat entering Release Gate as release approval.",
+            "mode": "immediate"
+          }
+        ]
+      }
+    },
+    {
+      "key": "needs_input",
+      "name": "Needs input",
+      "description": "Explicit parking for deferred promotion, rejected PR, intentionally parked work, or an unavailable session. Ordinary questions, dependencies and pipeline recovery wait in their working column. Read Waiting for you at the top of a parked card for its reason, next action and resume column. Nothing runs here.",
+      "icon": "message-circle-question",
+      "color": "#ef4444",
+      "autoSpawn": false
+    },
+    {
+      "key": "done",
+      "name": "Done",
+      "role": "done",
+      "icon": "circle-check-big",
+      "color": "#10b981"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "82c54fdc-d15f-40e6-aac7-2c8a13fd82ab",
+      "name": "Efficient",
+      "description": "Recommended for new cards: keep conversational gates on their defaults and use Codex Sol low for Planning and Implementation. Apply before the card first enters either role.",
+      "columns": {
+        "Planning": {
+          "agentOverride": "${agents.efficient}",
+          "modelOverride": "${models.efficient}",
+          "effortOverride": "low",
+          "permissionMode": "bypassPermissions"
+        },
+        "Implementation": {
+          "agentOverride": "${agents.efficient}",
+          "modelOverride": "${models.efficient}",
+          "effortOverride": "low",
+          "permissionMode": "bypassPermissions"
+        }
+      }
+    }
+  ]
+}

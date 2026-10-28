@@ -1,0 +1,22 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install apm-cli
+      - run: ./scripts/validate.sh
+      - run: ./scripts/test-install.sh
+      - run: ./scripts/build-agent-plugin.sh
+      - run: jq empty build/agent-plugin/plugin.json

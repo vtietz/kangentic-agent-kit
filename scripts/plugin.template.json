@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kangentic-agent-kit",
+  "version": "__VERSION__",
+  "description": "Portable delivery roles, skills, and Kangentic board integration for coding agents.",
+  "author": {
+    "name": "Volker Tietz",
+    "url": "https://github.com/vtietz"
+  },
+  "repository": "https://github.com/vtietz/kangentic-agent-kit",
+  "license": "MIT",
+  "keywords": ["agent-skills", "kangentic", "codex", "claude", "copilot"]
+}

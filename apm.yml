@@ -1,0 +1,22 @@
+name: kangentic-agent-kit
+version: 0.1.0
+description: Portable delivery roles, skills, and Kangentic board integration for coding agents.
+author:
+  name: Volker Tietz
+  url: https://github.com/vtietz
+license: MIT
+homepage: https://github.com/vtietz/kangentic-agent-kit
+repository: https://github.com/vtietz/kangentic-agent-kit
+keywords:
+  - agent-skills
+  - kangentic
+  - codex
+  - claude
+  - copilot
+includes: auto
+target:
+  - codex
+  - claude
+  - copilot
+devDependencies:
+  apm: []
