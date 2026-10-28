@@ -60,10 +60,12 @@ workflow or ownership change requires a major release.
 
 1. Update the version in `apm.yml`, `scripts/build-agent-plugin.sh`, and README
    installation examples.
-2. Run the full validation above.
-3. Commit and push the change.
-4. Tag the validated commit and publish the release.
-5. Wait for package CI to pass.
+2. Add exactly one user-focused sentence for the release to `CHANGELOG.md`,
+   newest first. Keep implementation detail in the commit or release notes.
+3. Run the full validation above.
+4. Commit and push the change.
+5. Tag the validated commit and publish the release.
+6. Wait for package CI to pass.
 
 Do not move or replace an existing release tag. Consumers rely on version pins
 and content hashes being immutable.

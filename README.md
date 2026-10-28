@@ -86,6 +86,8 @@ Install the released package in the repository that will use it:
 apm install vtietz/kangentic-agent-kit#v0.3.1
 ```
 
+See [CHANGELOG.md](CHANGELOG.md) for the user-visible change in each release.
+
 Commit `apm.yml`, `apm.lock.yaml`, and APM's generated target files. CI should
 restore and audit the exact locked package:
 
