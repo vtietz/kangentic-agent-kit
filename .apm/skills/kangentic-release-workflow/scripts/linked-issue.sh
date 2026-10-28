@@ -2,6 +2,7 @@
 # Print the GitHub issue number imported into a Kangentic card, or nothing when
 # the card has no linked GitHub issue.
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 cd "$(git rev-parse --show-toplevel)"
 card_dir="${1:-}"
@@ -17,7 +18,7 @@ if [[ -n "${KANBAN_CARD_NUMBER:-}" ]]; then
   sql="${sql} or cast(display_id as text) = '${KANBAN_CARD_NUMBER}'"
 fi
 
-response="$(python3 - "$sql" <<'PY'
+response="$("$PY" - "$sql" <<'PY'
 import json, os, sys, urllib.request
 
 payload = json.dumps({

@@ -60,8 +60,6 @@ project-profile slots:
   `no`.
 - Preview may be `none` only when empty state exposes the acceptance behavior;
   otherwise name a reusable idempotent command, destination, actor, and state.
-- Preserve the refined idea's marketing-scene decision when present; a `yes`
-  adds the scene and the profile's visual-scene command, otherwise `no`.
 
 Write `.kanban/<card-id>/e2e-specs.txt` with repository-relative browser specs,
 one per line; comments and an empty file are valid. Batch selected specs into

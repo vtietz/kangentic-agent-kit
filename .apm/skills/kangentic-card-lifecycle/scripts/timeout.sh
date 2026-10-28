@@ -3,9 +3,10 @@
 #
 #   ./.agents/skills/kangentic-card-lifecycle/scripts/timeout.sh <seconds> <command> [args...]
 #
-# Exit 124 means the deadline expired, matching GNU timeout. Python starts the
-# command in its own process group so Docker/Compose children are stopped too.
+# Exit 124 means the deadline expired, matching GNU timeout. Child processes are
+# stopped with the platform's process-tree mechanism.
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 die() { echo "kangentic-timeout: $*" >&2; exit 2; }
 
@@ -14,7 +15,7 @@ seconds="${1:-}"
 shift
 [[ $# -gt 0 ]] || die "usage: $0 <seconds> <command> [args...]"
 
-exec python3 - "$seconds" "$@" <<'PY'
+exec "$PY" - "$seconds" "$@" <<'PY'
 import os
 import signal
 import subprocess
@@ -24,7 +25,7 @@ seconds = int(sys.argv[1])
 command = sys.argv[2:]
 
 try:
-    process = subprocess.Popen(command, start_new_session=True)
+    process = subprocess.Popen(command, start_new_session=(os.name != "nt"))
 except FileNotFoundError:
     sys.exit(f"kangentic-timeout: command not found: {command[0]}")
 
@@ -35,11 +36,24 @@ except subprocess.TimeoutExpired:
         f"kangentic-timeout: command exceeded {seconds}s; terminating",
         file=sys.stderr,
     )
-    os.killpg(process.pid, signal.SIGTERM)
-    try:
-        process.wait(timeout=5)
-    except subprocess.TimeoutExpired:
-        os.killpg(process.pid, signal.SIGKILL)
-        process.wait()
+    if os.name == "nt":
+        subprocess.run(
+            ["taskkill", "/T", "/F", "/PID", str(process.pid)],
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        try:
+            process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+    else:
+        os.killpg(process.pid, signal.SIGTERM)
+        try:
+            process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            process.wait()
     sys.exit(124)
 PY

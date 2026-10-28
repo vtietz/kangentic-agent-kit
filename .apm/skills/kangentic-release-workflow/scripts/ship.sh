@@ -18,6 +18,7 @@
 # working commits, and this never has to check main out - which matters, because
 # main is checked out in another worktree.
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 cd "$(git rev-parse --show-toplevel)"
 branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -83,7 +84,7 @@ name_card_dir() {
   [[ -n "$title" ]] || die "KANBAN_CARD_TITLE is required with KANBAN_CARD_NUMBER"
 
   card_id="$(./.agents/skills/kangentic-card-lifecycle/scripts/card-id.sh "$card_dir")" || exit 1
-  slug="$(python3 - "$title" <<'PY'
+  slug="$("$PY" - "$title" <<'PY'
 import re
 import sys
 import unicodedata
@@ -97,7 +98,7 @@ PY
   target=".kanban/$(printf '%04d' "$num")-${slug}"
   [[ ! -e "$target" ]] || die "${target} exists; is ${num} this card's number?"
 
-  python3 - "$card_dir/card.json" "$card_id" "$num" "$title" <<'PY'
+  "$PY" - "$card_dir/card.json" "$card_id" "$num" "$title" <<'PY'
 import json
 import sys
 

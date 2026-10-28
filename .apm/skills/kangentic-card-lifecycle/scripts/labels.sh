@@ -5,6 +5,7 @@
 #
 #   ./.agents/skills/kangentic-card-lifecycle/scripts/labels.sh <card-id> <stage:*|keep|clear> <wait:*|keep|clear>
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 cd "$(git rev-parse --show-toplevel)"
 die() { echo "kanban-labels: $*" >&2; exit 1; }
@@ -18,7 +19,7 @@ waiting="${3:-keep}"
 
 eval "$(./scripts/kangentic-mcp-env.sh)"
 
-python3 - "$card_id" "$stage" "$waiting" <<'PY'
+"$PY" - "$card_id" "$stage" "$waiting" <<'PY'
 import json
 import os
 import re

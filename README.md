@@ -83,7 +83,7 @@ rules differ by project.
 Install the released package in the repository that will use it:
 
 ```bash
-apm install vtietz/kangentic-agent-kit#v0.3.0
+apm install vtietz/kangentic-agent-kit#v0.3.1
 ```
 
 Commit `apm.yml`, `apm.lock.yaml`, and APM's generated target files. CI should

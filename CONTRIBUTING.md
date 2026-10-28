@@ -41,6 +41,7 @@ Run all package checks before publishing:
 
 ```bash
 ./scripts/validate.sh
+./scripts/test-portability.sh
 ./scripts/test-install.sh
 rm -rf build/agent-plugin
 ./scripts/build-agent-plugin.sh

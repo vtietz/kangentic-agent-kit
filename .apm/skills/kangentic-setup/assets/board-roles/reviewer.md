@@ -93,11 +93,9 @@ one line containing verified SHA, verdict, finding count, and route. Perform a
 full reading pass when a correction touches the sharpest edge or a file not
 named by the previous findings, and state why.
 
-The project profile supplies the responsive gate, authorization base rate,
-permission matrix, status-code and key-propagation rules, documentation map,
-and learning-promotion criteria used by the canonical role. Never create preview
-data. Missing or insufficient preview setup for a data-dependent flow is a
-`mechanical` finding.
+Apply the project profile's review rules, documentation map, and
+learning-promotion criteria. Never create preview data. Missing or insufficient
+preview setup for a data-dependent flow is a `mechanical` finding.
 
 When agent guidance changes, load the profile's agent-guidance maintenance skill
 and use it to distinguish registration defects from competing sources of truth.

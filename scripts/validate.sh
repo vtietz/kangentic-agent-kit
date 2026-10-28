@@ -26,7 +26,7 @@ while IFS= read -r -d '' script; do
   bash -n "$script" || status=1
 done < <(find .apm scripts -type f -name '*.sh' -print0)
 
-if rg -n -i 'mirulist|MIRULIST_INSTANCE|TMDB|run\.sh|frontend/|backend/|docs/backlog' \
+if rg -n -i 'mirulist|MIRULIST_INSTANCE|TMDB|run\.sh|frontend/|backend/|docs/backlog|docker|compose\.ya?ml|nestjs|typeorm|marketing' \
   .apm/skills .apm/agents; then
   fail 'portable package contains project-specific terms'
 fi

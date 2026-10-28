@@ -11,7 +11,7 @@ load this skill for `Preview setup: none` and `Early human checkpoint: no`.
 The Planner declares state; the Implementer reuses or creates its idempotent
 repository-owned setup command; Reviewer only checks the declaration; Release
 executes it exactly. Reuse public or documented flows; do not use a scratch
-script, invent data at Release Gate, or alter marketing demo seed data. Record
+script, invent data at Release Gate, or alter shared demo or seed data. Record
 the command, actor, destination, and result in `closeout.md`.
 
 When `Early human checkpoint: yes`:

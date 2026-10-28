@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # Print the authoritative Kangentic card UUID for an artifact directory.
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 card_dir="${1:?usage: card-id.sh .kanban/<card-directory>}"
 [[ -d "$card_dir" ]] || { echo "card-id: no card directory: ${card_dir}" >&2; exit 1; }
 
 metadata="${card_dir}/card.json"
 if [[ -f "$metadata" ]]; then
-  python3 - "$metadata" <<'PY'
+  "$PY" - "$metadata" <<'PY'
 import json
 import re
 import sys

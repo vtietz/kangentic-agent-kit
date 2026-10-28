@@ -18,6 +18,7 @@
 # closed one on this board happened - but then the link lives in the commit
 # message and nowhere else, which is worth reporting rather than hiding.
 set -euo pipefail
+PY="${PYTHON:-$(command -v python3 || command -v python || echo python3)}"
 
 cd "$(git rev-parse --show-toplevel)"
 die() { echo "release-report: $*" >&2; exit 1; }
@@ -59,7 +60,7 @@ fi
 eval "$(./scripts/kangentic-mcp-env.sh)"
 
 mcp() {
-  python3 - "$1" "$2" <<'PY'
+  "$PY" - "$1" "$2" <<'PY'
 import json, os, sys, urllib.error, urllib.request
 payload = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
                       "params": {"name": sys.argv[1], "arguments": json.loads(sys.argv[2])}}).encode()
@@ -82,7 +83,7 @@ PY
 # (2) what the board recorded
 if [[ -z "$issue" ]]; then
   sql="select external_url from tasks where id = '${card_id//\'/}' or cast(display_id as text) = '${card_id//\'/}'"
-  external="$(mcp kangentic_query_db "$(python3 -c 'import json,sys; print(json.dumps({"sql": sys.argv[1]}))' "$sql")" || true)"
+  external="$(mcp kangentic_query_db "$("$PY" -c 'import json,sys; print(json.dumps({"sql": sys.argv[1]}))' "$sql")" || true)"
   issue="$(printf '%s' "$external" | sed -n -E 's#.*/issues/([0-9]+).*#\1#p' | head -n 1)"
   [[ -z "$issue" ]] || source_of_issue="tasks.external_url"
 fi
@@ -114,7 +115,7 @@ if [[ -n "$dry_run" ]]; then
   exit 0
 fi
 
-body="$(python3 -c 'import json,sys; print(json.dumps({"taskId": sys.argv[1], "appendDescription": "\n" + open(sys.argv[2], encoding="utf-8").read().rstrip() + "\n"}))' "$card_id" "$file")"
+body="$("$PY" -c 'import json,sys; print(json.dumps({"taskId": sys.argv[1], "appendDescription": "\n" + open(sys.argv[2], encoding="utf-8").read().rstrip() + "\n"}))' "$card_id" "$file")"
 mcp kangentic_update_task "$body" >/dev/null
 echo "release-report: appended to card ${card_id}"
 
