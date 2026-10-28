@@ -78,6 +78,43 @@ subset for compatible tools. Kangentic board configuration remains a
 repository-owned integration layer because board columns, hooks, and release
 rules differ by project.
 
+## Runtime prerequisites
+
+The roles and Markdown instructions are independent of an application's
+language and framework. The bundled automation is command-line tooling and has
+these runtime requirements:
+
+| Requirement | Used for |
+|---|---|
+| Git | Repository state, worktrees, stage commits, review diffs, and release operations. |
+| Bash 3.2 or newer | All bundled shell scripts. Native PowerShell and Command Prompt are not supported script hosts. |
+| Python 3 | JSON handling, Kangentic API calls, card metadata, and portable command timeouts. Set `PYTHON` to an explicit interpreter when needed; otherwise scripts try `python3` and then `python`. Python 2 is not supported. |
+| Standard Unix tools | `awk`, `sed`, `find`, `sort`, `head`, `comm`, and `diff`, as supplied by Linux, macOS, or Git for Windows. |
+| Microsoft APM | Installing, locking, updating, and auditing the package. It is not needed merely to read the roles. |
+
+Some capabilities need additional tools only when used:
+
+- GitHub-linked cards and release operations use the GitHub CLI, `gh`.
+- Board configuration generation uses `jq`.
+- Historical pipeline analysis uses the `sqlite3` CLI.
+- Board-driven sessions require Kangentic and its repository integration.
+- Builds, tests, browsers, containers, and deployment tools belong to the
+  consuming repository and are declared in its project profile. The kit itself
+  does not require Node.js, Docker, or a particular application stack.
+
+## Supported environments
+
+| Environment | Support and CI coverage |
+|---|---|
+| Linux with Bash | Primary environment. CI runs package validation, fixture installation, plugin generation, and portability tests on Ubuntu. |
+| macOS with Bash | Supported. CI runs the portability tests on macOS. Scripts avoid Bash features newer than the system Bash 3.2. |
+| Windows with Git Bash | Supported. CI runs the portability tests on Windows, including process-tree timeout handling through `taskkill`. |
+| Windows PowerShell or Command Prompt | Not a supported direct script host. Run the scripts through Git Bash or use a compatible Linux environment such as WSL. |
+
+This makes the kit repository and application-stack agnostic, not
+runtime-dependency free. A consuming repository can use any programming
+language as long as the workflow helpers above are available where agents run.
+
 ## Install
 
 Install the released package in the repository that will use it:
