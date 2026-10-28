@@ -20,7 +20,7 @@ trap 'rm -rf "$fixture"' EXIT
 cd "$fixture"
 apm install
 
-for skill in kangentic-card-lifecycle kangentic-planner-role kangentic-setup; do
+for skill in kangentic-card-lifecycle kangentic-kit-development kangentic-planner-role kangentic-setup; do
   [[ -f ".agents/skills/$skill/SKILL.md" ]] || {
     echo "fixture missing installed skill: $skill" >&2
     exit 1

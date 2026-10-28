@@ -20,6 +20,11 @@ release policy. Create or update:
   authority; and
 - `.kanban/kangentic-config.json` for local agent, model, and prompt-path tokens.
 
+Add a short route to the repository's agent guide or project profile: changes
+to reusable Kangentic roles, skills, packaging, or releases use the installed
+`kangentic-kit-development` skill. Do not copy that skill's procedure into the
+route.
+
 Do not copy example-project commands, actors, ports, or product rules. Use `not
 applicable` for slots the repository genuinely lacks.
 

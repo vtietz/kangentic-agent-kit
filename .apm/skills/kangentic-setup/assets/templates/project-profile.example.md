@@ -27,6 +27,7 @@ Requirement archival policy: `<policy>`.
 | test selection | `<skill path>` |
 | applicable development skills | `<skill paths>` |
 | agent-guidance maintenance | `<skill path>` |
+| Kangentic kit development | `.agents/skills/kangentic-kit-development/SKILL.md` |
 | pull-request workflow | `<skill path or not applicable>` |
 
 ## Commands and hooks
