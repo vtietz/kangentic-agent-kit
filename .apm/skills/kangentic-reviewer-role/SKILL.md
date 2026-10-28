@@ -21,6 +21,8 @@ brief cannot establish safe behavior or scope.
 
 Read and apply the project profile's test-selection skill when reviewing a code
 change. It owns test selection and the Implementer/Reviewer validation split.
+If the profile defines `review method` supporting skills, read and apply them
+inside this role's independent, read-only review boundary.
 
 For every criterion, or for a direct brief's requested observable path, cite
 observable evidence such as a `file:line` reference or an asserting test. The

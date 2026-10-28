@@ -40,6 +40,8 @@ current code rather than treating them as present truth.
 Load the applicable development skills named by the project profile. Use its
 test-selection skill to choose test boundaries and the smallest sufficient
 validation. Use its command-execution skill when naming executable commands.
+If the profile defines `planning method` supporting skills, read and apply them
+within this role's approved scope and stopping boundary.
 
 ## Design pragmatically
 

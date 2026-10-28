@@ -15,6 +15,10 @@ Read the repository agent profile, the request, and its durable discussion.
 Load the profile's product principles, documentation map, relevant architecture,
 and existing proposed requirements for the same concept.
 
+If the project profile defines `refinement discovery` supporting skills, read and
+apply them during discovery. They supply a technique only; this role still owns
+the requirement output, boundaries, and stopping point.
+
 If the request links a GitHub issue and GitHub access is available, read its
 comments as part of the requirements. Do not post, edit, close, or otherwise
 mutate the issue unless the user explicitly authorizes that action.

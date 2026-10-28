@@ -25,6 +25,13 @@ to reusable Kangentic roles, skills, packaging, or releases use the installed
 `kangentic-kit-development` skill. Do not copy that skill's procedure into the
 route.
 
+Record optional supporting skills in the project profile by semantic capability:
+refinement discovery, planning method, implementation method, debugging method,
+and review method. Map only skills the repository has deliberately selected.
+Do not infer a mapping merely because a similarly named skill is installed; use
+`not applicable` when no method has been chosen. Verify every configured skill
+path exists.
+
 Do not copy example-project commands, actors, ports, or product rules. Use `not
 applicable` for slots the repository genuinely lacks.
 

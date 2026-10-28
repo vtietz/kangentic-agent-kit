@@ -83,7 +83,7 @@ rules differ by project.
 Install the released package in the repository that will use it:
 
 ```bash
-apm install vtietz/kangentic-agent-kit#v0.2.0
+apm install vtietz/kangentic-agent-kit#v0.3.0
 ```
 
 Commit `apm.yml`, `apm.lock.yaml`, and APM's generated target files. CI should
@@ -118,6 +118,30 @@ The consuming repository owns its project facts and integration, including:
 
 The reusable package contains no application framework, language, test runner,
 port, credential, product, or release-policy assumptions.
+
+## Use independently installed skills
+
+The kit does not bundle or automatically activate third-party methodologies.
+A consuming repository may install Superpowers, Grill Me, an internal skill
+set, or any other compatible skills through its preferred package mechanism.
+It then maps deliberately selected skills to semantic capability slots in
+`.agents/project.md`:
+
+```markdown
+| Stage capability | Skill |
+|---|---|
+| refinement discovery | `.agents/skills/grilling/SKILL.md` |
+| planning method | `not applicable` |
+| implementation method | `.agents/skills/test-driven-development/SKILL.md` |
+| debugging method | `.agents/skills/systematic-debugging/SKILL.md` |
+| review method | `not applicable` |
+```
+
+Portable roles load only the configured skills relevant to their stage. The
+repository's instructions retain project policy and safety authority, the role
+retains its outcome and stopping boundary, and the supporting skill contributes
+only its technique. Setup does not guess mappings from installed names because
+availability is not the same as repository intent.
 
 ## Updating a consuming repository
 

@@ -16,6 +16,11 @@ relevant repository guidance before editing. Inspect existing work and treat the
 the branch already contains changes. Acceptance criteria remain authoritative;
 record a conflict instead of implementing a plan that contradicts them.
 
+If the project profile defines `implementation method` supporting skills, read
+and apply them within the approved plan. When diagnosing a failure, also use any
+configured `debugging method` supporting skills. These techniques do not broaden
+scope or replace this role's verification and stopping boundaries.
+
 For a narrow direct request with no acceptance criteria, record a five-line
 brief: intent, observable result, scope, sharpest risk, and validation. It is a
 scope guard, not invented product requirements. Stop only when safe behavior or

@@ -30,6 +30,21 @@ Requirement archival policy: `<policy>`.
 | Kangentic kit development | `.agents/skills/kangentic-kit-development/SKILL.md` |
 | pull-request workflow | `<skill path or not applicable>` |
 
+## Optional supporting skills
+
+| Stage capability | Skill |
+|---|---|
+| refinement discovery | `<skill paths or not applicable>` |
+| planning method | `<skill paths or not applicable>` |
+| implementation method | `<skill paths or not applicable>` |
+| debugging method | `<skill paths or not applicable>` |
+| review method | `<skill paths or not applicable>` |
+
+Load only the non-`not applicable` entries relevant to the active role.
+Repository instructions own project policy and safety, the portable role owns
+its stage outcome and stopping boundary, and supporting skills supply techniques
+within that boundary.
+
 ## Commands and hooks
 
 | Slot | Command |

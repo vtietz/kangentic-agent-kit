@@ -1,5 +1,5 @@
 name: kangentic-agent-kit
-version: 0.2.0
+version: 0.3.0
 description: Portable delivery roles, skills, and Kangentic board integration for coding agents.
 author:
   name: Volker Tietz
