@@ -57,7 +57,8 @@ if [[ -n "$commit" ]]; then
   commit="$(git rev-parse --verify "${commit}^{commit}" 2>/dev/null)" || die "landed commit is not available locally"
 fi
 
-eval "$(./scripts/kangentic-mcp-env.sh)"
+mcp_env="$(./.agents/skills/kangentic-card-lifecycle/scripts/mcp-env.sh)" || exit 1
+eval "$mcp_env"
 
 mcp() {
   "$PY" - "$1" "$2" <<'PY'

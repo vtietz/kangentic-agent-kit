@@ -17,7 +17,8 @@ waiting="${3:-keep}"
 [[ "$stage" == keep || "$stage" == clear || "$stage" == stage:* ]] || die "invalid stage label: ${stage}"
 [[ "$waiting" == keep || "$waiting" == clear || "$waiting" == wait:* ]] || die "invalid wait label: ${waiting}"
 
-eval "$(./scripts/kangentic-mcp-env.sh)"
+mcp_env="$(./.agents/skills/kangentic-card-lifecycle/scripts/mcp-env.sh)" || exit 1
+eval "$mcp_env"
 
 "$PY" - "$card_id" "$stage" "$waiting" <<'PY'
 import json

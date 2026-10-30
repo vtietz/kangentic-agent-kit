@@ -27,6 +27,23 @@ for skill in kangentic-card-lifecycle kangentic-kit-development kangentic-planne
   }
 done
 
+[[ -x .agents/skills/kangentic-card-lifecycle/scripts/mcp-env.sh ]] || {
+  echo 'fixture missing executable Kangentic MCP environment helper' >&2
+  exit 1
+}
+
+if grep -R -n 'scripts/kangentic-mcp-env\.sh' .agents/skills; then
+  echo 'fixture contains an undeclared consumer MCP helper reference' >&2
+  exit 1
+fi
+
+if grep -F -R -n 'eval "$(' \
+  .agents/skills/kangentic-card-lifecycle/scripts \
+  .agents/skills/kangentic-release-workflow/scripts; then
+  echo 'fixture contains eval with an unchecked command-substitution failure' >&2
+  exit 1
+fi
+
 [[ -f .codex/agents/planner.toml ]] || {
   echo 'fixture missing Codex planner registration' >&2
   exit 1

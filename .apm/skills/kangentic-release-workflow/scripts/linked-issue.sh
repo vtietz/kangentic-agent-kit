@@ -10,7 +10,8 @@ card_dir="${1:-}"
 
 card_id="$(./.agents/skills/kangentic-card-lifecycle/scripts/card-id.sh "$card_dir")" || exit 1
 
-eval "$(./scripts/kangentic-mcp-env.sh)"
+mcp_env="$(./.agents/skills/kangentic-card-lifecycle/scripts/mcp-env.sh)" || exit 1
+eval "$mcp_env"
 
 sql="select external_url from tasks where id = '${card_id}'"
 if [[ -n "${KANBAN_CARD_NUMBER:-}" ]]; then
