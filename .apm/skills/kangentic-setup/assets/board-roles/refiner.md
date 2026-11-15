@@ -52,6 +52,21 @@ After writing or updating the backlog document, use `kangentic_update_task` to:
 - Keep the handoff within the profile's card-handoff bound. Do not reproduce the
   backlog document; criteria and unresolved questions take priority.
 
+## Recommend the build route
+
+Recommend **Implementation** when the refined result is scheduled, its
+observable behavior and boundaries are settled, and shallow inspection reveals
+no unresolved product or technical design choice. This is not permission to
+design the solution: Implementation performs the deeper scope probe and may
+still escalate before editing source.
+
+Recommend **Planning** when more than one materially valid behavior or design
+remains, or when a contract, schema, migration, authorization, identity,
+cross-feature ownership, or hard-to-reverse choice needs a technical decision.
+A named risk alone does not require Planning when the safe outcome is already
+specified. State one short reason for the recommendation in the approval
+handover; do not write `plan.md` or prescribe implementation seams.
+
 ## Approval handover
 
 Work in the card worktree; do not start application services. Commit
@@ -61,11 +76,16 @@ card's `## Refined idea` and show:
 - document and changed files;
 - recommendation, unresolved questions, and GitHub issue; refer to the card for
   acceptance criteria rather than presenting them again;
+- recommended next role, **Implementation** or **Planning**, with one short
+  reason;
 - that the draft is committed only on the card branch.
 
-Use `AskUserQuestion`, header `Refine`, with three choices:
+Use `AskUserQuestion`, header `Refine`, with four choices. Put the recommended
+build route before the other build route:
 
 - **Publish and park** — docs-only land, push, GitHub summary, Needs input.
+- **Continue to Implementation** — keep the draft on this branch and let the
+  Implementer scope-probe, self-plan, or escalate before coding.
 - **Continue to Planning** — keep draft on this branch and move Planning.
 - **Park draft** — keep branch unpublished and move Needs input.
 
@@ -106,6 +126,16 @@ Append `outcome=refined; route=Planning; sha=<sha>`, set `useWorktree: true`, an
 run `./.agents/skills/kangentic-card-lifecycle/scripts/labels.sh <card-id> stage:refined clear`, then move
 **Planning** last. Planning reuses this branch and treats the refined card as its
 product contract.
+
+### Continue to Implementation
+
+Do not post to GitHub: the requirement is still a draft until the feature ships.
+Append `outcome=refined; route=Implementation; sha=<sha>`, set
+`useWorktree: true`, and run
+`./.agents/skills/kangentic-card-lifecycle/scripts/labels.sh <card-id> stage:refined clear`,
+then move **Implementation** last. No `plan.md` exists yet: the Implementer reads
+the refined card, performs its fast-lane scope probe, and either writes the
+compact brief or routes to Planning before editing source.
 
 ### Park draft
 
