@@ -2,6 +2,7 @@
 
 Each release gets one user-focused sentence, newest first.
 
+- 2026-11-15 `v0.5.3`: Made resumed Refiners reload changed routing policy before presenting or applying a handoff choice.
 - 2026-11-15 `v0.5.2`: Made Release Stewards avoid ambiguous browser targets and handle screenshot coordinates explicitly.
 - 2026-11-15 `v0.5.1`: Shortened Release Gate evidence instructions while preserving the same presentation and safety contract.
 - 2026-11-15 `v0.5.0`: Added compact Release Gate evidence pages that pair focused screenshots or looping clips with one-click access to the reviewed live app.

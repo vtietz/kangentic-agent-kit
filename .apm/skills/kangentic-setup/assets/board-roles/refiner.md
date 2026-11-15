@@ -75,6 +75,12 @@ handover; do not write `plan.md` or prescribe implementation seams.
 
 ## Approval handover
 
+Immediately before showing the menu, and again before acting on a reply after
+any wait, check `git diff HEAD..main -- .kanban/roles/refiner.md`. If it differs,
+read `git show main:.kanban/roles/refiner.md` and apply that current routing
+policy. Do not merge `main` merely to refresh instructions, and do not claim a
+route is forbidden before this check.
+
 Work in the card worktree; do not start application services. Commit
 the draft with `./.agents/skills/kangentic-card-lifecycle/scripts/stage-commit.sh refinement`, then append/replace the
 card's `## Refined idea` and show:
