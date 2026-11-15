@@ -51,13 +51,10 @@ unless they ask to stop it. Apply the profile responsive gate to changed UI. For
 attach after and—if practical without risky stash—before; otherwise state why
 it is absent.
 
-Read Review's **Evidence** mode and closeout `## Release evidence`. For
-`screenshot` or `video`, read and apply `kangentic-release-evidence`, execute
-the exact project-profile capture and presentation hooks, then open the
-verified evidence page in the board browser pane. Video is for temporal or
-multi-step behavior, not a mandatory replacement for the live app. The evidence
-page must keep the reviewed live destination one action away. For
-`text`, state why no visual surface applies. If a user-visible change has
+Read Review's **Evidence** mode and closeout `## Release evidence`, then apply
+`kangentic-release-evidence`. Open its verified page for `screenshot` or
+`video`, the app for `live`, and state why no visual applies for `text`. If a
+user-visible change has
 `Human check: none`, or required capture lacks a command/output, record
 `## Preview setup gap` and route Implementation rather than inventing evidence.
 

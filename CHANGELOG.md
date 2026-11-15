@@ -2,6 +2,7 @@
 
 Each release gets one user-focused sentence, newest first.
 
+- 2026-11-15 `v0.5.1`: Shortened Release Gate evidence instructions while preserving the same presentation and safety contract.
 - 2026-11-15 `v0.5.0`: Added compact Release Gate evidence pages that pair focused screenshots or looping clips with one-click access to the reviewed live app.
 - 2026-11-15 `v0.4.0`: Added direct Refinement handoff, pre-code design checkpoints, and behavior-matched release evidence.
 - 2026-10-30 `v0.3.3`: Made board labels, linked-issue lookup, and release reporting self-contained by shipping live Kangentic MCP discovery with the kit.

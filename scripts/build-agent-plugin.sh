@@ -14,7 +14,7 @@ cp -R .apm/skills/. "$output/skills/"
 cp LICENSE "$output/LICENSE"
 
 sed \
-  -e 's|__VERSION__|0.5.0|g' \
+  -e 's|__VERSION__|0.5.1|g' \
   scripts/plugin.template.json >"$output/plugin.json"
 
 printf 'Built Agent Plugins package: %s\n' "$output"

@@ -121,7 +121,7 @@ language as long as the workflow helpers above are available where agents run.
 Install the released package in the repository that will use it:
 
 ```bash
-apm install vtietz/kangentic-agent-kit#v0.5.0
+apm install vtietz/kangentic-agent-kit#v0.5.1
 ```
 
 See [CHANGELOG.md](CHANGELOG.md) for the user-visible change in each release.
