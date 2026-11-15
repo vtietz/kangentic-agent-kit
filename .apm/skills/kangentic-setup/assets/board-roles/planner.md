@@ -45,7 +45,10 @@ summary and interactive wait in **Planning**. Use `wait:dependency` when a
 prerequisite blocks the plan; state its exact completion condition. Do not
 invent an undefined collection period or move merely because a reply is pending.
 Use a mock only when text cannot decide an interaction or proportion; it must
-resolve a specific question and must not be referenced by `plan.md`.
+resolve a specific question and must not be referenced by `plan.md`. Read and
+apply `.agents/skills/kangentic-preview-checkpoint/SKILL.md`, complete its
+pre-implementation design checkpoint in Planning, and record the human decision
+before finalizing the plan. Do not change production source for this checkpoint.
 
 ## Planning artifacts
 

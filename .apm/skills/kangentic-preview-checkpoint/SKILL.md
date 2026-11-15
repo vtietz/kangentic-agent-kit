@@ -1,12 +1,36 @@
 ---
 name: kangentic-preview-checkpoint
-description: Prepare a reusable Kangentic preview or optional early checkpoint. Use only when preview state is needed or the plan sets Early human checkpoint to yes.
+description: Prepare a disposable pre-code design checkpoint, reusable preview, or optional early implementation checkpoint when a material human decision needs visual evidence.
 ---
 
 # Kangentic preview checkpoint
 
-Read `.agents/project.md`, `.kanban/project.md`, the card plan, and the card lifecycle skill. Do not
-load this skill for `Preview setup: none` and `Early human checkpoint: no`.
+Read `.agents/project.md`, `.kanban/project.md`, the card lifecycle skill, and the
+card plan when one exists. Do not load this skill when no design artifact,
+preview state, or early checkpoint is needed.
+
+## Pre-implementation design checkpoint
+
+Refiner or Planner may use this checkpoint only when text cannot settle one
+material interaction, proportion, layout, or multi-state choice. Use a text
+sketch first. Create HTML or another visual artifact only when interaction or
+proportion is the question. Do not change production source, tests, migrations,
+or application data.
+
+Use the project profile's design-preview hook when available; otherwise attach a
+portable artifact the human can open. Verify the URL or attachment before
+presenting it. Add or replace card `## Design checkpoint` with the question,
+recommended option, artifact, intentionally omitted behavior, and next route.
+Commit only the repository-approved disposable artifact when the profile allows
+it; never make the mock part of the acceptance contract or reference it from
+`plan.md`.
+
+Ask **Approve direction**, **Adjust mock**, **Continue without mock**, or
+**Park**. Approval and continue-without-mock stay in the owning role so it can
+finish Refinement or Planning. Adjust stays in the role and replaces the same
+checkpoint. Park follows the lifecycle waiting procedure and routes Needs input
+only when the human chooses durable parking. Record the decision under card
+`## Decisions` and remove the resolved checkpoint before routing onward.
 
 The Planner declares state; the Implementer reuses or creates its idempotent
 repository-owned setup command; Reviewer only checks the declaration; Release

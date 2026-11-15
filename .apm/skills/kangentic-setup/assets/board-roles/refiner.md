@@ -23,6 +23,12 @@ Apply the portable role with the card prompt as the request. Load its referenced
 product lens, documentation map, architecture, and backlog only when they affect
 the refinement; `AGENTS.md` and `docs/` are their canonical sources.
 
+When one material visual or interaction question cannot be settled in text,
+read and apply `.agents/skills/kangentic-preview-checkpoint/SKILL.md` before
+finishing the requirement. Complete its pre-implementation design checkpoint in
+Refinement; do not write production code or route onward until the decision is
+recorded.
+
 ## Card and issue persistence
 
 Card `external_url` means only the issue body was imported. Read comments:

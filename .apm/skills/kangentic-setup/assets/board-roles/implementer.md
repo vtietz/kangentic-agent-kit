@@ -109,6 +109,11 @@ build diary. Aim for 200 words and record final runs only:
 ## Preview setup
 - `<command>` — destination, actor/login, pass/fail; or `none`
 
+## Release evidence
+- `<live|screenshot|video|text>` — expected visible result; project-profile
+  capture command and output when screenshot or video is required; otherwise
+  `none` only for no user-visible behavior
+
 ## Choices
 - Non-obvious choice or deviation: decision; reason; rejected alternative
 

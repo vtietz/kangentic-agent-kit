@@ -106,11 +106,19 @@ Before returning a third consecutive `CHANGES_REQUESTED` to Implementation,
 summarize failed fixes and route **Planning**. Reset after PASS, Planning, or a
 `source=human` Implementer line. A passing review always advances.
 
-On `PASS`, add `## Release brief` after the clean areas. Keep it to three lines:
+On `PASS`, add `## Release brief` after the clean areas. Keep it to four lines:
 
 - **Human-visible risk** — `none`, or the one route/state a human should judge.
 - **Preview** — `skip`, or setup command, actor, and destination.
-- **Human check** — `none`, or the expected visible result in one sentence.
+- **Human check** — the expected visible result in one sentence; `none` is valid
+  only when the change has no user-visible behavior.
+- **Evidence** — `live`, `screenshot`, `video`, or `text`, with one short reason.
+
+Choose `video` for timing, animation, navigation, state transitions, or a
+multi-step behavior that is materially easier to judge in motion. Choose
+`screenshot` for a static visual state, `live` for interaction, and `text` only
+when there is no useful visual surface. A missing capture command for required
+video or screenshot evidence is a mechanical preview-setup finding.
 
 This is a file handover, not reviewer-session context. A `none` risk lets Release
 Gate present validation and shipping choices without starting a preview.
@@ -140,6 +148,7 @@ PASS or CHANGES REQUESTED — include winning route reason when findings differ
 - **Human-visible risk** — `none` or route/state
 - **Preview** — `skip` or setup; actor; destination
 - **Human check** — `none` or expected result
+- **Evidence** — `live|screenshot|video|text`; reason
 
 ## Learning review
 - Optional verdict and compact proposal fields; omit when no candidate.

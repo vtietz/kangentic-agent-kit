@@ -23,6 +23,10 @@ pull-request skill for GitHub operations.
   Verify readiness and open/report the same URL; never improvise state. The card, not `plan.md`, supplies
   acceptance criteria.
 - Present outcome, clicks, validation, base divergence, and exact commit subject.
+- Present the expected visible result for every user-visible change. Use the
+  reviewed evidence mode: live interaction by default, screenshot for a static
+  state, video for temporal or multi-step behavior, and text only when no useful
+  visual surface exists. Execute only project-declared capture commands.
 
 Entering Release Gate is not authority to mutate GitHub or the base branch. Ask for
 one explicit choice among PR publication, local landing, direct publication, or
