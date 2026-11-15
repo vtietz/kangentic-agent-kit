@@ -40,11 +40,12 @@ The package contains four role boundaries:
   findings.
 
 Supporting skills provide card lifecycle and handoff behavior, optional preview
-checkpoints, read-only pipeline analysis, release preparation, and initial
-repository setup. The `kangentic-kit-development` skill teaches an installed
-consumer how to contribute, test, release, and adopt improvements to the kit.
-Named-agent projections make the roles discoverable in Codex, Claude Code, and
-GitHub Copilot.
+checkpoints, compact release-evidence presentation, read-only pipeline analysis,
+release preparation, and initial repository setup. The
+`kangentic-kit-development` skill teaches an installed consumer how to
+contribute, test, release, and adopt improvements to the kit. Named-agent
+projections make the roles discoverable in Codex, Claude Code, and GitHub
+Copilot.
 
 The separation is deliberate. A role defines responsibility, required evidence,
 and where an agent must stop. The consuming repository defines how to build and
@@ -120,7 +121,7 @@ language as long as the workflow helpers above are available where agents run.
 Install the released package in the repository that will use it:
 
 ```bash
-apm install vtietz/kangentic-agent-kit#v0.4.0
+apm install vtietz/kangentic-agent-kit#v0.5.0
 ```
 
 See [CHANGELOG.md](CHANGELOG.md) for the user-visible change in each release.

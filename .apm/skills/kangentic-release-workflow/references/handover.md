@@ -52,10 +52,11 @@ attach after and—if practical without risky stash—before; otherwise state wh
 it is absent.
 
 Read Review's **Evidence** mode and closeout `## Release evidence`. For
-`screenshot` or `video`, execute the exact project-profile capture command and
-attach or link its declared output after verifying it opens. Video is for
-temporal or multi-step behavior, not a mandatory replacement for the live app.
-Keep the live destination available when interaction remains useful. For
+`screenshot` or `video`, read and apply `kangentic-release-evidence`, execute
+the exact project-profile capture and presentation hooks, then open the
+verified evidence page in the board browser pane. Video is for temporal or
+multi-step behavior, not a mandatory replacement for the live app. The evidence
+page must keep the reviewed live destination one action away. For
 `text`, state why no visual surface applies. If a user-visible change has
 `Human check: none`, or required capture lacks a command/output, record
 `## Preview setup gap` and route Implementation rather than inventing evidence.
@@ -68,7 +69,7 @@ routes Implementation. Do not present a release-ready menu with an unavailable r
 Append a compact `## Ready to look at` containing:
 
 - Review's human-visible risk and expected result;
-- selected evidence mode and verified screenshot/video attachment when required;
+- selected evidence mode and verified presentation URL or asset when required;
 - preview destination, actor/login, parked state, and interaction path, or
   `preview skipped at the human’s request`;
 - preview-setup command and state, or `skip`;

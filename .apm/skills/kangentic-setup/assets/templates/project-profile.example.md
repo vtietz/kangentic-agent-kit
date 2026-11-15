@@ -52,7 +52,8 @@ within that boundary.
 | bootstrap | `<command>` |
 | preview / cleanup | `<command or not applicable>` |
 | design preview | `<command or not applicable>` |
-| release evidence capture | `<command or not applicable>` |
+| release evidence capture | `<capture command or not applicable>` |
+| release evidence presentation | `<presentation command or not applicable>` |
 | selected browser validation | `<command or not applicable>` |
 | repository check | `<command>` |
 | security scan | `<command or not applicable>` |

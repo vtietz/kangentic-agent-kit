@@ -9,6 +9,8 @@ Read `.agents/project.md` for repository hooks and `.kanban/project.md` for
 release authority and card routing.
 Read `kangentic-card-lifecycle` for persistence ordering and the repository
 pull-request skill for GitHub operations.
+Read `kangentic-release-evidence` when preparing the first human handover or
+when Review requires screenshot or video evidence.
 
 ## Prepare the human gate
 
