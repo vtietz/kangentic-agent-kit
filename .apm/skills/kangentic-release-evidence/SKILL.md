@@ -19,6 +19,15 @@ do not review, approve, publish, or land.
 Video is optional. Keep it to one expected result, normally 5 to 15 seconds;
 exclude setup, loading, credentials, unrelated chrome, and idle time.
 
+## Drive the browser reliably
+
+Before clicking, query a stable selector and require one visible, enabled match;
+scope it to the visible dialog when overlays coexist. Re-query after navigation
+or dialog changes and verify the expected DOM or URL after the click. Avoid text
+selectors unless unique. Use coordinates only as fallback: screenshot pixels
+require the tool's image coordinate space when scale is 1; for a downscaled
+image, convert with its reported pixels-per-CSS-pixel value.
+
 ## Prepare the presentation
 
 Run the profile's exact hooks. The disposable page contains Result, Try,
